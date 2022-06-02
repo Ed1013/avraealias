@@ -1,4 +1,4 @@
-!alias atk multiline
+!serveralias atk multiline
 <drac2>
 ch=character()
 N = ch.name.lower()
@@ -6,9 +6,9 @@ N = ch.name.lower()
 if "venz" in N:
 	ATK = "Longbow -t Monster"
 elif "akta" in N:
-	ATK = "Cimitarra -t Monster -rr2 magical"
+	ATK = "Cimitarra -t Monster -c 10 -rr2 magical"
 elif "túrin" in N:
-	ATK = "Sol -t Monster -rr 2 magical"
+	ATK = "Sol -t Monster -d 1d8 -rr 2 magical"
 elif "hiro" in N:
 	ATK = "Hexen -t Monster magical"
 elif "andem" in N:
