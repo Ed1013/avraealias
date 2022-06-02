@@ -1,0 +1,7 @@
+@{selected|repeating_acmod_$0_global_ac_active_flag}
+
+!setattr --sel --repeating_acmod_$0_global_ac_active_flag|1
+
+{{?{Potion|Regular, **Healing Potion Used:** [[2d4+2]]|Greater, **Greater Healing Potion Used:** [[4d4+4]]|Superior, **Superior Healing Potion Used:** [[8d4+8]]|Supreme, **Supreme Healing Potion Used:** [[10d4+20]]}}}
+
+?{Bladesong|Start,!setattr --sel --repeating_acmod_$0_global_ac_active_flag#1|Stop,!setattr --sel --repeating_acmod_$0_global_ac_active_flag#0}

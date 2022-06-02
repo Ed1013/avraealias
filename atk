@@ -1,0 +1,20 @@
+!alias atk multiline
+<drac2>
+ch=character()
+N = ch.name.lower()
+
+if "venz" in N:
+	ATK = "Longbow -t Monster"
+elif "akta" in N:
+	ATK = "Cimitarra -t Monster -rr2 magical"
+elif "túrin" in N:
+	ATK = "Sol -t Monster -rr 2 magical"
+elif "hiro" in N:
+	ATK = "Hexen -t Monster magical"
+elif "andem" in N:
+	ATK = "Eldritch -t Monster magical"
+else:
+	ATK = ""
+
+</drac2>
+!a {{ATK}}
