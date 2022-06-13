@@ -1,2 +1,0 @@
-!alias mon multiline
-!i madd %1% -name Monster -note %1%
