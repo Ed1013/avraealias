@@ -1,6 +1,5 @@
 !alias matk <drac2>
 args = &ARGS&
-monster = combat().current
 
 targets = []
 for tar in combat().combatants:
@@ -12,13 +11,15 @@ if not targets:
 else:
 	TAR = randchoice(targets)
 
-if len(args) == 0:
-    ATK = randchoice(combat().current.attacks).name
-    command = f'i attack {ATK} -t {TAR} -thumb https://i.imgur.com/ZjDpFlO.jpg'
-elif len(args) == 1:
-    command = f'i attack {args[0]} -t {TAR} -thumb https://i.imgur.com/ZjDpFlO.jpg'
-elif len(args) == 2:
-    command = f'i attack {args[0]} -t {TAR} -thumb https://i.imgur.com/ZjDpFlO.jpg -rr {args[1]}'
+#ARGS !matk <monster name> <attack name> <no. of attacks>
+if len(args)<=3 and len(args)>=1:
+    if len(args) == 1:
+        command = f'i aoo {args[0]}'
+    elif len(args) == 2:
+        command = f'i aoo {args[0]} {args[1]}'
+    elif len(args) == 3:
+        command = f'i aoo {args[0]} {args[1]} -rr {args[2]}'
+    command += f' -t {TAR} -thumb https://i.imgur.com/ZjDpFlO.jpg'
 else:
     command = f'echo invalid number of arguments'
 
