@@ -13,4 +13,11 @@ Uvar is Battles
     "!init add 20 DM -p",
     "!i effect DM map -attack \"||Size: 21x14 ~ Background: https://i.imgur.com/FCeRtJY.jpg ~ Options: c70\""
     ]
+},
+{
+    "normalArenaBehir": [
+    "!init add 20 DM -p",
+    "!i madd Behir -note \"Token: 2esj6 | Size: H | Location: p7\"",
+    "!i effect DM map -attack \"||Size: 21x14 ~ Background: https://i.imgur.com/FCeRtJY.jpg ~ Options: c70\""
+    ]
 }
