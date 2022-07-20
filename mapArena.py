@@ -8,3 +8,6 @@
 
 #add monsters
 !map -t <nombre> -token <shortcode> -size <T,S,M,L,H,G> -move <position>
+
+#summon celestial tokens
+!alias celtoken echo ```!map -t celestial -token jbsct -size L```
