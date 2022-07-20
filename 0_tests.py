@@ -28,3 +28,12 @@ if "venz" in N:
 	ATK = "'Longbow' -rr 2"
 return ATK
 </drac2>
+
+!test <drac2>
+string = ""
+i=1
+while i<= 3:
+	string += f'Line {i}\n'
+	i+=1
+</drac2>
+{{string}}
