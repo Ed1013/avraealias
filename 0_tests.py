@@ -33,7 +33,7 @@ return ATK
 string = ""
 i=1
 while i<= 3:
-	string += f'Line {i}\n'
+	string += f'{ctx.prefix} Line {i}\n'
 	i+=1
 </drac2>
 {{string}}
