@@ -1,22 +1,24 @@
+Uvar is Battles
+!uvar Battles <paste json>
+{
+    "normalArena": [
+    "!init add 20 Map -p",
+    "!i effect Map map -attack \"||Size: 21x14 ~ Background: https://i.imgur.com/FCeRtJY.jpg ~ Options: c70\""
+  ],
+
+    "nightArena": [
+    "!init add 20 Map -p",
+    "!i effect Map map -attack \"||Size: 21x14 ~ Background: https://i.imgur.com/L6ls7Jq.jpg ~ Options: c70\""
+  ]
+
+}
+
+
+----------------> example
 {
     "<bplan Name>": [
     "!init add 20 DM -p",
     "!i madd <Monster> -note \"Token: <token short code> | Location: <Grid Location>\" <Other Modifiers>",
     "!i effect DM map -attack \"||Size: <size> ~ Background: <url link> ~ Options: <options> ~ Objects: <object> ~ Walls: <wall>\""
     ]
-}
-
-Uvar is Battles
-!uvar Battles <paste json>
-{
-    "normalArena": [
-    "!init add 20 Map -p",
-    "!i effect DM map -attack \"||Size: 21x14 ~ Background: https://i.imgur.com/FCeRtJY.jpg ~ Options: c70\""
-  ],
-
-    "nightArena": [
-    "!init add 20 Map -p",
-    "!i effect DM map -attack \"||Size: 21x14 ~ Background: https://i.imgur.com/L6ls7Jq.jpg ~ Options: c70\""
-  ]
-
 }

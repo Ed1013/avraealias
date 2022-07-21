@@ -35,7 +35,10 @@ if combat():
 		else:
 			TAR = randchoice(targets)
 	else:
-		TAR = args[0]
+		if "-t" in args[0]:
+			TAR = args[1]
+		else:
+			TAR = args[0]
 
 	command = f'a {ATK} -t {TAR}'
 else:
