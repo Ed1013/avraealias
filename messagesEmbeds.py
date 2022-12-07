@@ -6,4 +6,4 @@
 #ARGS <Text> <Monedas>
 !alias vender embed -title "Casa de empeños" -desc %1% -footer "Ganancia: +%2% GP" -thumb https://i.imgur.com/5Y7t79u.png
 
-!alias box echo ```%1%```
+#instead of box embed use single `  to encase single line code
