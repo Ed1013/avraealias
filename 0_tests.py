@@ -37,3 +37,12 @@ while i<= 3:
 	i+=1
 </drac2>
 {{string}}
+
+#Check if monster name is in list of combatants
+!test <drac2>
+op = any(mon.name == "GO3" for mon in combat().combatants)
+if op == True:
+	return "it's there"
+else:
+	return "not in battle"
+</drac2>

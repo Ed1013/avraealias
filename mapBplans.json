@@ -1,6 +1,5 @@
 Uvar is Battles
-!uvar Battles <paste json>
-{
+!uvar Battles {
     "normalArena": [
     "!init add 20 Map -p",
     "!i effect Map map -attack \"||Size: 21x14 ~ Background: https://i.imgur.com/FCeRtJY.jpg ~ Options: c70\""
@@ -14,8 +13,7 @@ Uvar is Battles
   "christmasArena":[
     "!init add 20 Map -p",
     "!i effect Map map -attack \"||Size: 21x21 ~ https://i.imgur.com/9QTvkJK.jpg ~ Options: c70\""
-  ]
-
+  ],
 }
 
 
