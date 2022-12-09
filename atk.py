@@ -42,7 +42,8 @@ if combat():
             TAR = args[0]
 	op = any(mon.name == TAR for mon in combat().combatants)
 	if op == False:
-		return f'echo {TAR} no esta en la lista de monstruos del combate'
+		command = f'echo **__{TAR}__ no esta en la lista de monstruos del combate!**\nNo puedes elegir arma con este comando, usa !attack <nombre de arma> -t <monstruo> para poder elegir con que arma atacar.'
+        return command
 
     command = f'a {ATK} -t {TAR}'
 else:
