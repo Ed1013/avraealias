@@ -46,3 +46,13 @@ if op == True:
 else:
 	return "not in battle"
 </drac2>
+
+
+#putting combatants in array
+!test <drac2>
+mons = []
+grouped =  combat().get_group("Monsters").combatants
+for mon in grouped:
+	mons.append(mon.name)
+return mons
+</drac2>
