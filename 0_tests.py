@@ -56,3 +56,25 @@ for mon in grouped:
 	mons.append(mon.name)
 return mons
 </drac2>
+
+#return combat metadata
+!test {{combat().get_metadata("combatAreas","notSet")}}
+
+#reset combat metadata
+!test {{combat().set_metadata("combatAreas","notSet")}}
+
+#get inside object
+!test <drac2>
+areas = load_json(combat().get_metadata("combatAreas"))
+string = ''
+for area in areas:
+	string+=f'this is {area[0]} \n'
+return string
+</drac2>
+
+#get length of metadata object
+!test <drac2>
+areas = load_json(combat().get_metadata("combatAreas"))
+string=f'echo length of area {len(areas)} \n'
+return string
+</drac2>
