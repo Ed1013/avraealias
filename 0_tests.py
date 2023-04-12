@@ -78,3 +78,9 @@ areas = load_json(combat().get_metadata("combatAreas"))
 string=f'echo length of area {len(areas)} \n'
 return string
 </drac2>
+
+#testing argparse -area ArenaCentral -area "Arena Sur" -area "Arena Este" -img http://imgur.com/
+!alias testy <drac2>
+args =argparse(&ARGS&)
+return f'echo {args.get("area")}'
+</drac2> 
