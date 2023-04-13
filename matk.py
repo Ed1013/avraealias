@@ -25,3 +25,6 @@ else:
 
 return command
 </drac2>
+
+#include monster image
+!snippet monimg -thumb https://www.dndbeyond.com/avatars/thumbnails/30836/551/1000/1000/638063939544338029.png

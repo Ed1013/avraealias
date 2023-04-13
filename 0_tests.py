@@ -82,5 +82,18 @@ return string
 #testing argparse -area ArenaCentral -area "Arena Sur" -area "Arena Este" -img http://imgur.com/
 !alias testy <drac2>
 args =argparse(&ARGS&)
-return f'echo {args.get("area")}'
+return f'echo {args}'
+</drac2> 
+
+#testing splitting arguments from |
+# -monster Xorn|3|https://www.dndbeyond.com/avatars/thumbnails/30836/551/1000/1000/638063939544338029.png -monster Kobold|4|https://www.dndbeyond.com/avatars/thumbnails/30832/207/1000/1000/638063832924455756.png
+
+!alias testy <drac2>
+args =argparse(&ARGS&)
+mons = args.get('monster')
+monsters = []
+for mon in mons:
+	monster = mon.split('|')
+	monsters.append({"name":monster[0],"number":monster[1],"image":monster[2]})
+return f'echo {monsters}'
 </drac2> 
