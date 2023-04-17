@@ -29,31 +29,35 @@ return areaEmbed
 
 </drac2>
 
-###Initialize the areas metadata
+###Initialize the areas and monster image combat metadata
 !alias initAreas <drac2>
 if combat():
-    args = argparse(&ARGS&)
-    areas = args.get("area")
-    if len(areas) < 1:
-        return 'echo Necesitas al menos 1 area'
-    allAreas = []
+    coliseoSchema = load_json(get_uvar('planColiseo'))
+    areasInfo = coliseoSchema.arena.areas
 
     mons = []
     grouped =  combat().get_group("Monsters").combatants
     for mon in grouped:
         mons.append(mon.name)
+    last = len(areasInfo)-1
+    name = areasInfo[last].name
+    areasInfo[last] = {"name":name,"members":mons}
 
-    i=0
-    for area in areas:
-        if i == (len(areas)-1):
-            allAreas.append({"name":area,"members":mons})
-        else:
-            allAreas.append({"name":area,"members":[]})
-        i+=1
+    #Create array for monster to images
+    monstersInfo = coliseoSchema.monsters
+    monImgs = []
+    for mon in monstersInfo:
+        for m in grouped:
+            if mon.name == m.monster_name:
+                monImgs.append({"monname":m.name,"img":mon.image})
+    
+    
+    combat().set_metadata("combatImg",coliseoSchema.arena.get("img"))
+    combat().set_metadata("combatAreas", dump_json(areasInfo))
+    combat().set_metadata("monImgs", dump_json(monImgs))
 
-    if args.last("img",default=None) is not None:
-        combat().set_metadata("combatImg",args.last("img"))
-    combat().set_metadata("combatAreas", dump_json(allAreas))
+    return f'embed -desc "Arena de combate preparada, utiliza **!areas** para localizar a todos los combatientes" -color "#3271a8"'
+
 else:
     return f'echo not in combat...'
 </drac2>
