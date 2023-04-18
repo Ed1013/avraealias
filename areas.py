@@ -45,11 +45,11 @@ if combat():
 
     #Create array for monster to images
     monstersInfo = coliseoSchema.monsters
-    monImgs = []
+    monImgs = {}
     for mon in monstersInfo:
         for m in grouped:
             if mon.name == m.monster_name:
-                monImgs.append({"monname":m.name,"img":mon.image})
+                monImgs.update({m.name:mon.image})
     
     
     combat().set_metadata("combatImg",coliseoSchema.arena.get("img"))

@@ -1,3 +1,19 @@
+!alias matk multiline
+<drac2>
+args = argparse(&ARGS&)
+monsters = args.get("m")
+target = args.last("t")
+monimgs=load_json(combat().get_metadata("monImgs"))
+
+command = ''
+for mon in monsters:
+    command += f'{ctx.prefix}i aoo {mon} claw -t {target} -thumb {monimgs[mon]}\n'
+
+return command
+</drac2>
+
+
+
 !alias matk <drac2>
 args = &ARGS&
 
@@ -27,4 +43,8 @@ return command
 </drac2>
 
 #include monster image
-!snippet monimg -thumb https://www.dndbeyond.com/avatars/thumbnails/30836/551/1000/1000/638063939544338029.png
+!snippet monimg -thumb <drac2>
+    c=load_json(combat().get_metadata("monImgs"))
+    m=get('name')
+</drac2>
+{{c[m]}}
