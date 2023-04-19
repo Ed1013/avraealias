@@ -1,5 +1,5 @@
-!alias coliseo multiline
-<drac2>
+!alias coliseo 
+multiline <drac2>
 command = f'{ctx.prefix}i begin\n'
 coliseoSchema = load_json(get_uvar('planColiseo'))
 monsters = coliseoSchema.monsters
@@ -17,8 +17,8 @@ return command
 #-------------------------------------------
 
 ##For planning, setting the uvar before 
-!alias planColiseo embed
-<drac2>
+!alias planColiseo 
+embed <drac2>
 args = argparse(&ARGS&)
 coliseoSchema = {}
 coliseoSchema.update({"arena":{"name":args.last("arenaname"),"img":args.last("arenaimg")}})

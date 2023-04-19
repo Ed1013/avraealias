@@ -63,7 +63,8 @@ else:
 </drac2>
 
 ###Move to the specified area
-!alias areas move <drac2>
+!alias areas move 
+multiline <drac2>
 def findMember(member,areasInfo):
     i = 0
     for area in areasInfo:
@@ -91,36 +92,38 @@ def showAreas(whoMove,where):
         areaInfo+=f'---\n'
         areaCounter+=1
 
-    areaEmbed = f'embed -title "__:crossed_swords: Areas del Combate :crossed_swords:__" -desc ":arrow_forward: __{whoMove} se mueve a {where}!__\n\n{areaInfo}" -color #42adf5'
+    areaEmbed = f'{ctx.prefix}embed -title "__:crossed_swords: Areas del Combate :crossed_swords:__" -desc ":arrow_forward: __{whoMove} se mueve a {where}!__\n\n{areaInfo}" -color #42adf5'
     imgCombat = combat().get_metadata("combatImg",default=None)
     if imgCombat is not None:
         areaEmbed +=f' -image "{imgCombat}"'
 
     return areaEmbed
-
-
 #start
 toMove = &1&
 areas = load_json(combat().get_metadata("combatAreas"))
 if toMove is None:
-    return f'echo Debes incluir el numero del area al que te quieres mover'
+    return f'{ctx.prefix}echo Debes incluir el numero del area al que te quieres mover'
 elif toMove > len(areas) or toMove-1 < 0:
-    return f'echo el area numero {toMove} no existe'
+    return f'{ctx.prefix}echo el area numero {toMove} no existe'
 
 if combat():
     if "notSet" in combat().get_metadata("combatAreas","notSet"):
-        return f'echo Areas not initialized, use initialize_areas'
+        return f'{ctx.prefix}echo Areas not initialized, use initialize_areas'
     #remove from current location
     index = findMember(character().name,areas)
+    if toMove-1 > index+2 or toMove-1 < index-2:
+        return f'\n{ctx.prefix}embed -desc "No puedes moverte mas de 2 areas!" -color "#cc0e1e" '
     if index is None:
-        return f'echo your character is not in combat, use !join to start'
+        return f'{ctx.prefix}echo your character is not in combat, use !join to start'
     areas[index].members.remove(character().name)
     areas[toMove-1].members.append(character().name)
     combat().set_metadata("combatAreas",dump_json(areas))
     output = showAreas(character().name,areas[toMove-1].name)
+    if toMove-1 == index+2 or toMove-1 == index-2:
+        output += f'\n{ctx.prefix}embed -desc "Haz utilizado tu accion DASH para moverte 2 areas!" -color "#cc0e1e" -thumb "https://i.pinimg.com/originals/14/2a/4c/142a4c52619597f299b046fbffcf2e57.jpg"'
 
 else:
-    output = f'echo Not in combat...'
+    output = f'{ctx.prefix}echo Not in combat...'
 
 
 return output
