@@ -4,6 +4,12 @@ command = f'{ctx.prefix}i begin\n'
 coliseoSchema = load_json(get_uvar('planColiseo'))
 monsters = coliseoSchema.monsters
 
+num = randint(1,3)
+if num%2 == 0:
+  command +=f'{ctx.prefix}svar longrest true\n'
+else:
+  command +=f'{ctx.prefix}svar longrest false\n'
+
 for mon in monsters:
   command += f'{ctx.prefix}i madd "{mon.name}" -n {mon.number} -group "Monsters"\n'
   command += f'{ctx.prefix}embed -title ":japanese_ogre: Nuevo Contrincante :japanese_ogre:" -desc "*{mon.name}*" -image {mon.image} -color "#780c37"\n'

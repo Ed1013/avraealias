@@ -2,7 +2,7 @@
 !alias areas <drac2>
 if combat():
     if "notSet" in combat().get_metadata("combatAreas","notSet"):
-        return f'echo Areas not initialized, use initialize_areas'
+        return f'echo Areas not initialized, use initAreas'
     areas = load_json(combat().get_metadata("combatAreas"))
     areaInfo = ''
     areaCounter = 1
