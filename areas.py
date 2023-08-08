@@ -224,3 +224,23 @@ if GMname == ctx.author.name:
             output = f'echo Not in combat...'
 
 </drac2>
+
+!alias areas add
+<drac2>
+args = &ARGS&
+toAdd = args[0]
+inArea = args[1]
+GMname = "ed1013"
+if GMname == ctx.author.name:
+        if combat():
+            if "notSet" in combat().get_metadata("combatAreas","notSet"):
+                return f'echo Areas not initialized, use initialize_areas'
+            areas = load_json(combat().get_metadata("combatAreas"))
+
+            combat().set_metadata("combatAreas",dump_json(areas))
+            output = f'echo Added {toAdd} to area {inArea}'
+            return output
+        else:
+            output = f'echo Not in combat...'
+
+</drac2>
