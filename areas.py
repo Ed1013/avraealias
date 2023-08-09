@@ -1,5 +1,6 @@
 #print the areas information
-!alias areas <drac2>
+!alias areas 
+<drac2>
 if combat():
     if "notSet" in combat().get_metadata("combatAreas","notSet"):
         return f'echo Areas not initialized, use initAreas'
@@ -10,7 +11,10 @@ if combat():
         areaInfo+=f'**({areaCounter}) {area.get("name")}**\n'
         for m in area.get("members"):
             mstats = combat().get_combatant(m)
-            if mstats.monster_name is None:
+            if mstats is None:
+                areaInfo+=f'*{m}*\n'
+                #combatant without corresponding entity in combat(), hasn't joined
+            elif mstats.monster_name is None:
                 areaInfo+=f'*{m}* - HP {mstats.hp}/{mstats.max_hp}\n'
             else:
                 areaInfo+=f'{m} - ({mstats.monster_name})\n'
@@ -206,19 +210,18 @@ def findMember(member,areasInfo):
                 return i
         i+=1
     return None
-
-args = &ARGS&
-toRemove = args[0]
+toRemove = &ARGS&
 GMname = "ed1013"
 if GMname == ctx.author.name:
         if combat():
             if "notSet" in combat().get_metadata("combatAreas","notSet"):
                 return f'echo Areas not initialized, use initialize_areas'
             areas = load_json(combat().get_metadata("combatAreas"))
-            index = findMember(toRemove,areas)
-            areas[index].members.remove(toRemove)
+            for tR in toRemove:
+                index = findMember(tR,areas)
+                areas[index].members.remove(tR)
             combat().set_metadata("combatAreas",dump_json(areas))
-            output = f'echo Removed {toRemove} from areas'
+            output = f'echo Removed {toRemove} from combat arena'
             return output
         else:
             output = f'echo Not in combat...'
@@ -228,17 +231,17 @@ if GMname == ctx.author.name:
 !alias areas add
 <drac2>
 args = &ARGS&
-toAdd = args[0]
-inArea = args[1]
+newMember = args[0]
+areaNo = int(args[1])-1
 GMname = "ed1013"
 if GMname == ctx.author.name:
         if combat():
             if "notSet" in combat().get_metadata("combatAreas","notSet"):
                 return f'echo Areas not initialized, use initialize_areas'
             areas = load_json(combat().get_metadata("combatAreas"))
-
+            areas[areaNo].members.append(newMember)
             combat().set_metadata("combatAreas",dump_json(areas))
-            output = f'echo Added {toAdd} to area {inArea}'
+            output = f'echo Added {newMember} to area {areas[areaNo].name}'
             return output
         else:
             output = f'echo Not in combat...'
