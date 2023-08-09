@@ -41,3 +41,28 @@ string = 'embed -desc \"' + string + '\" -color #fc3503'
 
 return string
 </drac2>
+
+!alias multisave 
+<drac2>
+#!multidmg -save <save type> -dc <save dc to overcome> -t <list of members to make saves>
+args = argparse(&ARGS&)
+save = args.get("save")[0]
+savedc = args.get("dc")[0]
+string = ''
+if combat():
+  for member in args.get("t"):
+    combatmem = combat().get_combatant(member) 
+    if combatmem is None:
+      string += f'{member} is not in the combat.\n'
+    else:
+      string += f'{combatmem.name} takes {damage} damage! '
+      combatmem.set_hp(combatmem.hp - int(damage))
+      string +=f'{combat().get_combatant(combatmem.name).hp_str()}\n'
+
+else:
+  string = f'Not in combat...'
+
+string = 'embed -desc \"' + string + '\" -color #fc3503'
+
+return string
+</drac2>
