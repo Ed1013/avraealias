@@ -1,6 +1,6 @@
 !serveralias atk <drac2>
 if combat():
-    if combat().round_num == 0 or combat().current.name != "Heroes":
+    if combat().round_num == 0 or combat().current.name != get('name'):
         return f'echo No es tu turno para atacar ❌'
     args = &ARGS&
     N = character().name.lower()
@@ -28,7 +28,7 @@ if combat():
         targets = []
         for mon in combat().combatants:
             if mon.name != 'Map' and mon.name != 'DM' and mon.name.lower() != N:
-                if mon.hp > 0 and mon.group != 'Heroes':
+                if mon.hp > 0 and mon.group == 'Monsters':
                     targets.append(mon.name)
         if not targets:
             TAR = ""

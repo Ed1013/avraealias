@@ -12,7 +12,7 @@ if combat():
         areaInfo[indexArea].members.append(character().name)
         combat().set_metadata("combatAreas",dump_json(areaInfo))
 
-        command = f'{ctx.prefix}init join -group Heroes -f "Random starting area"|"{areaInfo[indexArea].name}" \n'
+        command = f'{ctx.prefix}init join -f "Random starting area"|"{areaInfo[indexArea].name}" \n'
 
         if lr == 'true':
             command += f'{ctx.prefix}game longrest \n'
