@@ -1,12 +1,34 @@
-!serveralias atk <drac2>
+!serveralias atk 
+<drac2>
 if combat():
     if combat().round_num == 0 or combat().current.name != get('name'):
         return f'echo No es tu turno para atacar ❌'
-    args = &ARGS&
+    args = argparse(&ARGS&)
+    strcommand = "&*&"
     N = character().name.lower()
 
     if character().hp <= 0:
         return f'echo No puedes atacar, estas desmayado ☠️'
+    
+    targets = args.get("t")
+    if len(targets) == 0:
+        return f'echo Necesitas al menos un target para tu ataque, utiliza **-t** para indicar cual monstruo atacar.\nUtiliza **!i list** o **!areas** para ver que monstruos estan en combate.'
+#target specified
+    else:
+        command = f'i attack {strcommand}'
+else:
+    command = f'echo Not in combat...'
+
+return f'{command}'
+</drac2>
+
+
+"""
+        for TAR in targets:
+            op = any(mon.name == TAR for mon in combat().combatants)
+            if op == False:
+                command = f'echo **__{TAR}__ no esta en la lista de monstruos del combate!**'
+                return command
 
 #set attack string
     if "venz" in N:
@@ -21,33 +43,4 @@ if combat():
         ATK = "Eldritch -rr 2 magical"
     else:
         ATK = ""
-
-#choose random target
-    if len(args) == 0:
-        #check combatants and make non 0 possible targets
-        targets = []
-        for mon in combat().combatants:
-            if mon.name != 'Map' and mon.name != 'DM' and mon.name.lower() != N:
-                if mon.hp > 0 and mon.group == 'Monsters':
-                    targets.append(mon.name)
-        if not targets:
-            TAR = ""
-        else:
-            TAR = randchoice(targets)
-#target specified
-    else:
-        if "-t" in args[0]:
-            TAR = args[1]
-        else:
-            TAR = args[0]
-	op = any(mon.name == TAR for mon in combat().combatants)
-	if op == False:
-		command = f'echo **__{TAR}__ no esta en la lista de monstruos del combate!**\nNo puedes elegir arma con este comando, usa !attack <nombre de arma> -t <monstruo> para poder elegir con que arma atacar.'
-        return command
-
-    command = f'a {ATK} -t {TAR}'
-else:
-    command = f'echo Not in combat...'
-
-return command
-</drac2>
+"""

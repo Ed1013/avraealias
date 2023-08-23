@@ -97,3 +97,11 @@ for mon in mons:
 	monsters.append({"name":monster[0],"number":monster[1],"image":monster[2]})
 return f'echo {monsters}'
 </drac2> 
+
+
+#testing arguments
+!alias testy <drac2>
+strarg = "&*&"
+return f'echo {strarg}'
+
+</drac2>
