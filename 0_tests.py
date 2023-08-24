@@ -105,3 +105,10 @@ strarg = "&*&"
 return f'echo {strarg}'
 
 </drac2>
+
+!alias testy <drac2>
+args = argparse(&ARGS&)
+result = args.get('True')
+return f'echo {result}'
+
+</drac2>
