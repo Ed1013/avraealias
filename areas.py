@@ -21,7 +21,7 @@ if combat():
         areaInfo+=f'---\n'
         areaCounter+=1
 
-    areaEmbed = f'embed -title "__:crossed_swords: Areas del Combate :crossed_swords:__" -desc "{areaInfo}" -color #42adf5'
+    areaEmbed = f'embed -title "__:crossed_swords: Areas del Combate :crossed_swords:__" -desc "**{combat().get_metadata("combatName")}:**\n{areaInfo}" -color #42adf5'
     imgCombat = combat().get_metadata("combatImg",default=None)
     if imgCombat is not None:
         areaEmbed +=f' -image "{imgCombat}"'
@@ -57,6 +57,7 @@ if combat():
     
     
     combat().set_metadata("combatImg",coliseoSchema.arena.get("img"))
+    combat().set_metadata("combatName",coliseoSchema.arena.get("name"))
     combat().set_metadata("combatAreas", dump_json(areasInfo))
     combat().set_metadata("monImgs", dump_json(monImgs))
 
