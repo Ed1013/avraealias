@@ -7,7 +7,11 @@ mon = &ARGS&[0]
 monimgs=load_json(combat().get_metadata("monImgs"))
 
 command = ''
-command += f'{ctx.prefix}i aoo {argstr} -thumb {monimgs[mon]}\n'
+mon_img = monimgs.get(mon)
+if mon_img is not None:
+    command += f'{ctx.prefix}i aoo {argstr} -thumb {mon_img}'
+else:
+    command += f'{ctx.prefix}i aoo {argstr}'
 
 return command
 </drac2>

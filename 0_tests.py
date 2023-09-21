@@ -61,7 +61,7 @@ return mons
 !test {{combat().get_metadata("combatAreas","notSet")}}
 
 #reset combat metadata
-!test {{combat().set_metadata("combatAreas","notSet")}}
+#!test {{combat().set_metadata("combatAreas","notSet")}}
 
 #get inside object
 !test <drac2>

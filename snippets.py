@@ -2,8 +2,13 @@
 !snippet monimg -thumb <drac2>
     c=load_json(combat().get_metadata("monImgs"))
     m=get('name')
+    i=c.get(m)
+    if i is not None:
+        image = i
+    else: 
+        image = "https://i.imgur.com/qOTuihZ.png"
 </drac2>
-{{c[m]}}
+{{image}}
 
 #target all in one area
 !serversnippet -area <drac2>
