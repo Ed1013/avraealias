@@ -61,7 +61,8 @@ if combat():
     combat().set_metadata("combatAreas", dump_json(areasInfo))
     combat().set_metadata("monImgs", dump_json(monImgs))
 
-    return f'embed -desc "Arena de combate preparada, utiliza **!areas** para localizar a todos los combatientes" -color "#3271a8"'
+    return f'embed -desc "Arena de combate preparada, utiliza **!areas** para localizar a todos los combatientes" -color "#3271a8" -image {coliseoSchema.arena.get("img")} -footer "Campo de batalla: {coliseoSchema.arena.get("name")}"'
+
 
 else:
     return f'echo not in combat...'
