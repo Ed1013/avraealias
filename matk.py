@@ -13,12 +13,6 @@ return command
 </drac2>
 
 
-#include monster image
-!snippet monimg -thumb <drac2>
-    c=load_json(combat().get_metadata("monImgs"))
-    m=get('name')
-</drac2>
-{{c[m]}}
 
 
 #Old matk with random
