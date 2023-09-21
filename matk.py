@@ -1,6 +1,6 @@
-#attack as a monster an include image
-#!matk -m <monster name> -t <target name> 
 !alias matk multiline
+#attack as a monster an include image
+#Arguments: !matk <normal !i aoo arguments>
 <drac2>
 argstr = "&*&"
 mon = &ARGS&[0]
@@ -11,7 +11,7 @@ mon_img = monimgs.get(mon)
 if mon_img is not None:
     command += f'{ctx.prefix}i aoo {argstr} -thumb {mon_img}'
 else:
-    command += f'{ctx.prefix}i aoo {argstr}'
+    command += f'{ctx.prefix}i aoo {argstr} -thumb https://i.imgur.com/qOTuihZ.png'
 
 return command
 </drac2>
